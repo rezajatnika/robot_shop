@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Shopping Cart</h1>
+      <% if @cart.line_items.any? %>
+        <%= render 'carts/line_items/line_items', cart: @cart %>
+        <hr>
+        <%= link_to products_path, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to Store
+        <% end %>
+        <button class="btn btn-success pull-right">
+          Checkout Now <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </button>
+      <% else %>
+        <h5>Your cart is currently empty</h5>
+        <hr>
+        <%= link_to products_path, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to Store
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

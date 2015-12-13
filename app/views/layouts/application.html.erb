@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robot Shop</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/navbar' %>
+    <div class="container" id="flash">
+      <%= render 'layouts/flash' %>
+    </div>
+    <div id="site-content">
+      <%= yield %>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="muted">&copy; 2015 Robot Shop, Inc</p>
+      </div>
+    </footer>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+</html>

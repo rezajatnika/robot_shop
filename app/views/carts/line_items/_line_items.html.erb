@@ -1,0 +1,27 @@
+<%= form_for cart, url: update_cart_path(cart), turboboost: true do |f| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Robot Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= f.fields_for :line_items, cart.line_items.includes(:product).order(created_at: 'desc') do |field| %>
+      <%= render 'carts/line_items/line_item', line_item: field.object, field: field %>
+    <% end %>
+      <tr>
+        <td></td>
+        <td>
+          <%= button_tag type: 'submit', class: 'btn btn-info btn-xs', value: 'button' do %>
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Update Cart
+          <% end %>
+        </td>
+        <td><strong>Grand Total</strong></td>
+        <td><strong><%= number_to_currency(cart.grand_total) %></strong></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

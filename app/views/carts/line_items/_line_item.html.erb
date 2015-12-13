@@ -1,0 +1,11 @@
+<%= content_tag_for :tr, line_item do %>
+  <td class="col-md-4"><%= line_item.product.name %></td>
+  <td class="col-md-3"><%= field.number_field :quantity, class: 'quantity form-control input-sm' %></td>
+  <td class="col-md-2"><%= number_to_currency(line_item.product.price) %></td>
+  <td class="col-md-2"><%= number_to_currency(line_item.quantity * line_item.product.price) %></td>
+  <td class="col-md-1">
+    <%= link_to line_item_path(line_item), method: :delete, class: 'btn btn-xs', turboboost: true, data: { confirm: 'Are you sure?' } do %>
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    <% end %>
+  </td>
+<% end %>
